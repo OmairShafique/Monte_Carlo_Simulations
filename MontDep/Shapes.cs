@@ -11,8 +11,19 @@ namespace MontDep
     {
         #region Properties
 
+        /// <summary>
+        /// Total number of sides of the shape
+        /// </summary>
         public int number_of_sides;
+
+        /// <summary>
+        /// Coordinates of the Origin Point
+        /// </summary>
         public double[] coord_for_origin;
+
+        /// <summary>
+        /// length of the sides but in an array
+        /// </summary>
         public double[] length_of_sides;
 
         /// <summary>
@@ -68,14 +79,23 @@ namespace MontDep
         /// <summary>
         /// Coordinates for each corner, needs to be updated
         /// </summary>
-        public double[,] Coordinates_for_each_corner { get; set; }
+        public double[] Coordinates_for_each_corner { get; set; }
 
-
-
+        /// <summary>
+        /// Mathematical Domain of the shape, where other shapes may not be instantiated
+        /// </summary>
+        public double DOMAIN;
         #endregion
+
 
         #region Constructor
 
+        /// <summary>
+        /// Constructor for the Shape class
+        /// </summary>
+        /// <param name="Number_of_sides">Total number of sides of the shape</param>
+        /// <param name="Coord_for_origin">Coordinates of the Origin Point</param>
+        /// <param name="Length_of_sides">length of the sides but in an array</param>
         public Shapes(int Number_of_sides, double[] Coord_for_origin, double[] Length_of_sides)
         {
             number_of_sides = Number_of_sides;
