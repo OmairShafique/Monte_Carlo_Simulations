@@ -26,6 +26,9 @@ namespace MontDep
         /// </summary>
         public double[] length_of_sides;
 
+        /// give me a public variable for holding the orientation angles
+        public double[] Orientation_angles { get; set; }
+
         /// <summary>
         /// not yet properly defined, meant to give areas for any particle shape
         /// </summary>
@@ -77,14 +80,50 @@ namespace MontDep
         }
 
         /// <summary>
-        /// Coordinates for each corner, needs to be updated
+        /// Coordinates for each corner
         /// </summary>
-        public double[] Coordinates_for_each_corner { get; set; }
+        public double[] Coordinates_for_each_corner 
+        {
+            get
+            {
+                switch (this.number_of_sides)
+                {
+                    case (1):
+                        double[] coord_C = new double[2];
+                        coord_C[0] = this.coord_for_origin[0];
+                        coord_C[1] = this.coord_for_origin[1];
+                        return coord_C;
+
+                    case (2):
+                        return null;
+
+                    default:
+
+                        List<double[]> coord_T = new List<double[]>();
+                        double[] coord_T1 = this.coord_for_origin;
+
+                        for (int i = 0; i < this.number_of_sides; i++)
+                        {
+                            doublep[] next_coords = new double[2];
+                            next_coords[0] = coord_T1[0] + this.length_of_sides[i] * Math.Cos(this.Orientation_angles[i]);
+                            next_coords[1] = coord_T1[1] + this.length_of_sides[i] * Math.Sin(this.Orientation_angles[i]);
+
+                            coord_T.Add(next_coords);
+                        }
+                }
+            }
+        }
 
         /// <summary>
         /// Mathematical Domain of the shape, where other shapes may not be instantiated
         /// </summary>
-        public double DOMAIN;
+        public double DOMAIN 
+        {
+            get
+            {
+                return 0;
+            }
+        }
         #endregion
 
 
@@ -106,6 +145,10 @@ namespace MontDep
         #endregion
 
         #region Functions
+
+
+
+       
 
         #endregion
     }
