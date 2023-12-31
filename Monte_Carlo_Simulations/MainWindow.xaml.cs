@@ -33,14 +33,18 @@ namespace Monte_Carlo_Simulations
             Engine();
         }
 
-        public static void Engine()
+        public void Engine()
         {
             try
             {
                 #region Creating the Shapes
 
-                double[] Origin_Boundries = new double[4];
-                //Origin_Boundries[0] = 
+                int[] Origin_Boundries = new int[4];
+                Origin_Boundries[0] = 0;
+                Origin_Boundries[1] = 0;
+                Origin_Boundries[2] = (int)Main_Canvas.ActualWidth;
+                Origin_Boundries[3] = (int)Main_Canvas.ActualHeight;
+
 
                 // generate 20 random shapes
                 for (int i = 0; i < 20; i++)
@@ -61,8 +65,8 @@ namespace Monte_Carlo_Simulations
                     double[] origin = new double[2];
 
                     // generate random coordinates for the origin
-                    origin[0] = random.Next(1, 100);
-                    origin[1] = random.Next(1, 100);
+                    origin[0] = random.Next(Origin_Boundries[0], Origin_Boundries[2]);
+                    origin[1] = random.Next(Origin_Boundries[1], Origin_Boundries[3]);
 
                     // generate random angles for the shape
                     double[] angles = new double[n_of_sides];
@@ -81,9 +85,41 @@ namespace Monte_Carlo_Simulations
                 }
                 #endregion
 
+                #region Writing to the Output
+
+                foreach (MontDep.Shapes shape in shapes)
+                {
+                    Output.Text = Output.Text + "\nShape Number: "+ shape.SN;
+                    Output.Text = Output.Text + "\nNumber of sides: " + shape.number_of_sides;
+                    Output.Text = Output.Text + "\nOrigin: (" +  shape.coord_for_origin[0] + " , " + shape.coord_for_origin[1] + ")";
+                    Output.Text = Output.Text + "\nLength of sides: " + string.Join(", ", shape.length_of_sides);
+                    Output.Text = Output.Text + "\nAngles: " + string.Join(", ", shape.Orientation_angles);
+
+                    //print the coordinates for each corner for each object in the list
+                    Output.Text = Output.Text + "\nCoordinates for each corner: ";
+                    foreach (double[] coord in shape.Coordinates_for_each_corner)
+                    {
+                        Output.Text = Output.Text + "\n(" + coord[0] + " , " + coord[1] + ")";
+                    }
+
+                    Output.Text = Output.Text + "\n-------------------------\n";
+                }
+
+                #endregion
+
                 #region Posting to the Canvas
 
-                
+                foreach (MontDep.Shapes shape in shapes)
+                {
+                    Polyline aggregate = new Polyline();
+
+                    for (int i = 0; i < shape.number_of_sides - 1; i++)
+                    {
+
+                    }
+
+                }
+
 
                 #endregion
             }
