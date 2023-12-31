@@ -12,6 +12,11 @@ namespace MontDep
         #region Properties
 
         /// <summary>
+        /// Shape Number
+        /// </summary>
+        public int SN;
+
+        /// <summary>
         /// Total number of sides of the shape
         /// </summary>
         public int number_of_sides;
@@ -73,8 +78,7 @@ namespace MontDep
                         return 0;
                     default:
                         return 0;
-                        break;
-
+                        
                 }
             }
         }
@@ -105,7 +109,7 @@ namespace MontDep
 
                         double[] coord_T1 = this.coord_for_origin;
 
-                        for (int i = 0; i < this.number_of_sides; i++)
+                        for (int i = 0; i < this.number_of_sides - 1; i++)
                         {
                             double[] next_coords = new double[2];
                             next_coords[0] = coord_T1[0] + this.length_of_sides[i] * Math.Cos(this.Orientation_angles[i]);
@@ -140,8 +144,9 @@ namespace MontDep
         /// <param name="Coord_for_origin">Coordinates of the Origin Point</param>
         /// <param name="Length_of_sides">length of the sides but in an array</param>
         /// <param name="Length_of_sides">angles of the next side with the preceding</param>
-        public Shapes(int Number_of_sides, double[] Coord_for_origin, double[] Length_of_sides, double[] orientation)
+        public Shapes(int shape_number, int Number_of_sides, double[] Coord_for_origin, double[] Length_of_sides, double[] orientation)
         {
+            SN = shape_number;
             number_of_sides = Number_of_sides;
             coord_for_origin = Coord_for_origin;
             length_of_sides = Length_of_sides;

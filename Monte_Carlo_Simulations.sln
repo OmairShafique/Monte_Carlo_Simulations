@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MontDep", "MontDep\MontDep.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing_Values", "Testing_Values\Testing_Values.csproj", "{08A066EF-CE6E-4DBF-B024-B939E8C2A94B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monte_Carlo_Simulations", "Monte_Carlo_Simulations\Monte_Carlo_Simulations.csproj", "{62A155C1-71F5-4F77-BA7F-E3F11E6BA04E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{08A066EF-CE6E-4DBF-B024-B939E8C2A94B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08A066EF-CE6E-4DBF-B024-B939E8C2A94B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08A066EF-CE6E-4DBF-B024-B939E8C2A94B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A155C1-71F5-4F77-BA7F-E3F11E6BA04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A155C1-71F5-4F77-BA7F-E3F11E6BA04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A155C1-71F5-4F77-BA7F-E3F11E6BA04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A155C1-71F5-4F77-BA7F-E3F11E6BA04E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
