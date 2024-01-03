@@ -39,6 +39,9 @@ namespace Monte_Carlo_Simulations
             {
                 #region Creating the Shapes
 
+                Main_Canvas.Children.Clear();
+                shapes.Clear();
+
                 int[] Origin_Boundries = new int[4];
                 Origin_Boundries[0] = 0;
                 Origin_Boundries[1] = 0;
@@ -50,7 +53,7 @@ namespace Monte_Carlo_Simulations
                 for (int i = 0; i < 50; i++)
                 {
                     // generate a random number of sides
-                    int n_of_sides = random.Next(3, 5);
+                    int n_of_sides = random.Next(int.Parse(Min_Number_of_sides.Text), int.Parse(Number_of_sides.Text));
 
                     // generate a random number of sides
                     double[] sides = new double[n_of_sides];
@@ -58,7 +61,7 @@ namespace Monte_Carlo_Simulations
                     // generate random lengths for the sides
                     for (int j = 0; j < n_of_sides; j++)
                     {
-                        sides[j] = random.Next(1, 30);
+                        sides[j] = random.Next(int.Parse(Min_Length_of_sides.Text), int.Parse(Length_of_sides.Text));
                     }
 
                     // generate a random origin
@@ -74,11 +77,11 @@ namespace Monte_Carlo_Simulations
                     // generate random angles for the shape
                     for (int j = 0; j < n_of_sides - 1; j++)
                     {
-                        angles[j] = random.Next(0, 180);
+                        angles[j] = random.Next(int.Parse(Ini_Angle.Text), int.Parse(Fni_Angle.Text));
                     }
 
                     // generate the last angle
-                    angles[n_of_sides - 1] = 360 - angles.Sum();
+                    angles[n_of_sides - 1] = 180 - angles.Sum();
 
                     // add the shape to the list of shapes
                     shapes.Add(new MontDep.Shapes(i, n_of_sides, origin, sides, angles));
@@ -86,6 +89,8 @@ namespace Monte_Carlo_Simulations
                 #endregion
 
                 #region Writing to the Output
+
+                Output.Text = "";
 
                 foreach (MontDep.Shapes shape in shapes)
                 {
@@ -140,6 +145,11 @@ namespace Monte_Carlo_Simulations
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Run(object sender, RoutedEventArgs e)
+        {
+            Engine();
         }
     }
 }

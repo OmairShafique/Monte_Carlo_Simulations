@@ -53,6 +53,20 @@
         <Canvas Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray"/>
 
         <Button x:Name="Close" Content="_Close" Grid.Row="3" Grid.Column="1" Width="130" Height="24" HorizontalAlignment="Left" Background="WhiteSmoke" Margin="0,10" />
-        <Button x:Name="Save" Content="_Refresh" Grid.Row="3" Grid.Column="1" Width="130" Height="24" HorizontalAlignment="Right" Background="WhiteSmoke" Margin="0,10" />
+        <DockPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Height="30">
+            <TextBlock Text="Min Number of Sides"/>
+            <TextBox Text="3" x:Name="Min_Number_of_sides"/>
+            <TextBlock Text="Max Number of Sides"/>
+            <TextBox Text="5" x:Name="Number_of_sides"/>
+            <TextBlock Text="Min Length of Sides"/>
+            <TextBox Text="30" x:Name="Min_Length_of_sides"/>
+            <TextBlock Text="Max Length of Sides"/>
+            <TextBox Text="30" x:Name="Length_of_sides"/>
+            <TextBlock Text="Initial Angle"/>
+            <TextBox Text="60" x:Name="Ini_Angle"/>
+            <TextBlock Text="Final Angle"/>
+            <TextBox Text="120" x:Name="Fni_Angle"/>
+        </DockPanel>
+        <Button x:Name="Save" Click="Run" Content="_Refresh" Grid.Row="3" Grid.Column="1" Width="130" Height="24" HorizontalAlignment="Right" Background="WhiteSmoke" Margin="0,10" />
     </Grid>
 </Window>
