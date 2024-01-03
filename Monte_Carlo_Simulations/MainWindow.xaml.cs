@@ -42,15 +42,15 @@ namespace Monte_Carlo_Simulations
                 int[] Origin_Boundries = new int[4];
                 Origin_Boundries[0] = 0;
                 Origin_Boundries[1] = 0;
-                Origin_Boundries[2] = (int)Main_Canvas.ActualWidth;
-                Origin_Boundries[3] = (int)Main_Canvas.ActualHeight;
+                Origin_Boundries[2] = 500;// (int)Main_Canvas.Width;
+                Origin_Boundries[3] = 500;// (int)Main_Canvas.Height;
 
 
                 // generate 20 random shapes
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 50; i++)
                 {
                     // generate a random number of sides
-                    int n_of_sides = random.Next(3, 9);
+                    int n_of_sides = random.Next(3, 5);
 
                     // generate a random number of sides
                     double[] sides = new double[n_of_sides];
@@ -58,7 +58,7 @@ namespace Monte_Carlo_Simulations
                     // generate random lengths for the sides
                     for (int j = 0; j < n_of_sides; j++)
                     {
-                        sides[j] = random.Next(1, 100);
+                        sides[j] = random.Next(1, 30);
                     }
 
                     // generate a random origin
@@ -113,11 +113,24 @@ namespace Monte_Carlo_Simulations
                 {
                     Polyline aggregate = new Polyline();
 
+                    List<Point> points = new List<Point>();
+
+                    points.Add(new Point(shape.coord_for_origin[0], shape.coord_for_origin[1]));
+
                     for (int i = 0; i < shape.number_of_sides - 1; i++)
                     {
-
+                        points.Add(new Point(shape.Coordinates_for_each_corner[i][0], shape.Coordinates_for_each_corner[i][1]));
                     }
 
+                    points.Add(new Point(shape.coord_for_origin[0], shape.coord_for_origin[1]));
+
+                    aggregate.Points = new PointCollection(points);
+
+                    aggregate.Stroke = Brushes.Black;
+
+                    aggregate.StrokeThickness = 2;
+
+                    Main_Canvas.Children.Add(aggregate);
                 }
 
 
